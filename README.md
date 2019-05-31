@@ -2,15 +2,34 @@
 # Hello World
 
 ## Pattern Matching
-list = [1,2, [3,4,5]]
-[a,b,c] = list
 
-list
-list = [1,2,3]
-[a,2,b] = list
+```elixir
+iex(1)> list = [1,2, [3,4,5]]
+[1, 2, [3, 4, 5]]
+iex(2)> [a,b,c] = list
+[1, 2, [3, 4, 5]]
+iex(3)> [a,b,c] = list
+[1, 2, [3, 4, 5]]
+iex(4)> list
+[1, 2, [3, 4, 5]]
+iex(5)> list = [1,2,3]
+[1, 2, 3]
+iex(6)> [a,2,b] = list
+[1, 2, 3]
+iex(7)> list = [1,2,3]
+[1, 2, 3]
+iex(8)> [a,1,b] = list
+** (MatchError) no match of right hand side value: [1, 2, 3]
+    (stdlib) erl_eval.erl:453: :erl_eval.expr/5
+    (iex) lib/iex/evaluator.ex:257: IEx.Evaluator.handle_eval/5
+    (iex) lib/iex/evaluator.ex:237: IEx.Evaluator.do_eval/3
+    (iex) lib/iex/evaluator.ex:215: IEx.Evaluator.eval/3
+    (iex) lib/iex/evaluator.ex:103: IEx.Evaluator.loop/1
+    (iex) lib/iex/evaluator.ex:27: IEx.Evaluator.init/4
+```
 
-list = [1,2,3]
-[a,1,b] = list
+
+
 
 ## Which will match?
 a = [1,2,3]
