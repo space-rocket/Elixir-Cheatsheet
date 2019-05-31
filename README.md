@@ -1,7 +1,7 @@
 
 # Hello World
 
-# Pattern Matching
+## Pattern Matching
 list = [1,2, [3,4,5]]
 [a,b,c] = list
 
@@ -12,7 +12,7 @@ list = [1,2,3]
 list = [1,2,3]
 [a,1,b] = list
 
-# Which will match?
+## Which will match?
 a = [1,2,3]
 a = 4
 4 = a
@@ -23,11 +23,11 @@ a = [[1,2,3]]
 [1, _, _] = [1,2,3]
 [1, _, _] = [1,"cat","dog"]
 
-# Ignoring a value with underscore
+## Ignoring a value with underscore
 [1, 2, 3] = [a,b,c]
 [1, _, _] = [1,"cat","dog"]
 
-# Variables bind once (per match)
+## Variables bind once (per match)
 [a,a] = [1,1]
 a
 [a,a] = [1,2]
@@ -35,7 +35,7 @@ a
 a = 1
 [1, a, 3] = [1,2,3]
 
-# Forcing an existing value
+## Forcing an existing value
 a = 1
 a = 2
 ^a = 1
@@ -45,7 +45,7 @@ a = 1
 a = 2
 [^a, 2] = [1,2]
 
-# Which will match
+## Which will match
 [a,b,a] = [1,2,3]
 [a,b,a] = [1,1,2]
 [a,b,a] = [1,2,1]
@@ -62,16 +62,16 @@ a = 2
 ^a = 1
 ^a = 2 - a
 
-# Immutable Data
+## Immutable Data
 
-#Using head tail to create a copy of list. 
+## Using head tail to create a copy of list. 
 list1 = [3,2,1]
 list2 = [4 | list1]
 
 name = "elixir"
 cap_name = String.capitalize name
 
-# Regex 
+## Regex 
 iex> Regex.run ~r{[aeiou]}, "caterpillar"
 ["a"]
 iex> Regex.scan ~r{[aeiou]}, "caterpillar"
@@ -80,7 +80,7 @@ iex> Regex.split ~r{[aeiou]}, "caterpillar"
 ["c", "t", "rp", "ll", "r"]
 iex> 
 
-# Tuples
+## Tuples
 {1,2} 
 {:ok,  42, "next"}
 {:error, :enoent} 
@@ -96,13 +96,13 @@ action
 {:ok, file} = File.open("Rakefile")
 {:error, reason} = File.open("Rakefilenotthere")
 
-# Lists
+## Lists
 [1,2,3] ++ [4,5,6] # concatenation
 [1,2,3,4] -- [2,4] # difference
 1 in [1,2,3,4] # membership
 "wombat" in [1,2,3,4]
 
-# Keyword Lists
+## Keyword Lists
 [ name: "Mike", city: "San Francisco", likes: "Programming Elixir" ]
 
 
@@ -112,23 +112,23 @@ DB.save record, use_transaction: true, logging: "HIGH"
 [1, fred: 1, dave: 2]
 {1, fred: 1, dave: 2}
 
-# Maps
+## Maps
 %{ key => value, key => value }
 
-# Map with strings
+## Map with strings
 states  = %{"AL" => "Alabama", "WI" => "Wisconsin"}
 
-# Map with tuples
+## Map with tuples
 responses = %{{ :error, :enoent} => :fatal, {:error, :busy} => :retry}
 
-# Map with atoms (?)
+## Map with atoms (?)
 colors = %{ :red => 0xff0000, :green => 0x0ff00, :blue => 0x0000ff }
 
 %{ "one" => 1, :two => 2, {1,1,1} => 3}
 
 colors = %{ red: 0xff0000, green: 0x0ff00, blue: 0x0000ff }
 
-# Accessing a map
+## Accessing a map
 states = %{ "AL" => "Alabama", "WI" => "Wisconsin"}
 states["AL"]
 states["TX"]
@@ -136,19 +136,19 @@ states["TX"]
 response_types = %{{ :error, :enoent} => :fatal, {:error, :busy} => :retry}
 response_types[{:error, :busy}]
 
-# Accessing a map with atoms
+## Accessing a map with atoms
 colors = %{ :red => 0xff0000, :green => 0x0ff00, :blue => 0x0000ff } 
 colors[:red]
 colors.green
 
-# Binaries
+## Binaries
 bin = <<1, 2>>
 byte_size bin
 bin = <<3 :: size(2), 5:: size(4), 1 :: size(2)>>
 :io.format("~-8.2b~n", :binary.bin_to_list(bin))
 byte_size bin
 
-# Anonymous Functions
+## Anonymous Functions
 sum = fn (a, b) -> a + b end
 sum.(1,2)
 
@@ -161,13 +161,13 @@ f1.(5,6)
 f2 = fn -> 99 end
 f2.()
 
-# Functions and Pattern Matching
+## Functions and Pattern Matching
 iex> swap = fn {a,b} -> {b, a} end
 #Function<6.128620087/1 in :erl_eval.expr/5>
 iex> swap.({6,8})
 {8, 6}
 
-# My Turn
+## My Turn
 list_concat = fn (a,b) -> a ++ b end
 list_concat.([:a, :b], [:c, :d])
 
@@ -177,7 +177,7 @@ sum.(1,2,3)
 pair_tuple_to_list = fn {a,b} -> [a + b] end
 pair_tuple_to_list.({1234, 5678})
 
-# One Function, Multiple Bodies
+## One Function, Multiple Bodies
 handle_open = fn 
   {:ok, file} -> "Read data: #{IO.read(file, :line)}"
   {_, error} -> "Error: #{:file.format_error(error)}"
@@ -193,7 +193,7 @@ end
 IO.puts handle_open.(File.open("hello.txt"))
 IO.puts handle_open.(File.open("nonexistent"))
 
-# FizzBuzz
+## FizzBuzz
 ```elixir
 fizz_buzz = fn
   (0, 0, _) -> "FizzBuzz"
@@ -223,7 +223,7 @@ fizz_buzz_rem.(17)
 
 [http://wiki.c2.com/?FizzBuzzTest](http://wiki.c2.com/?FizzBuzzTest)
 
-# Functions Can Return Functions
+## Functions Can Return Functions
 fun1 = fn -> fn -> "Hello" end end
 fun1.()
 fun1.().()
@@ -238,36 +238,44 @@ fun1 = fn -> (fn -> "hello" end) end
 other = fun1.()
 other.()
 
-# Functions Remember Their Original Environment
+## Functions Remember Their Original Environment
 greeter = fn name -> (fn -> "Hello #{name}" end) end
 mike_greeter = greeter.("Mike")
 mike_greeter.()
 
-# Parameterized Functions
+## Parameterized Functions
 add_n = fn n -> (fn other -> n + other end) end
 add_two = add_n.(2)
 add_five = add_n.(5)
 add_two.(3)
 add_five.(7)
 
-# My turn
+## My turn
 prefix = fn str -> (fn other -> "#{str} #{other}" end) end
 mrs = prefix.("Mrs")
 mrs.("Smith")
 prefix.("Elixir").("Rocks")
 
 
-# Passing Functions as Arguements
+## Passing Functions as Arguements
 times_2 = fn n -> n * 2 end
 apply = fn (fun, value) -> fun.(value) end
 apply.(times_2, 6)
 
-# Enum has a built in function called map. It takes two arguments: a collection and  a function.
-# It returns a list that is the result of applying that function to each element of the collection.
+Enum has a built in function called map. It takes two arguments: a collection and  a function. It returns a list that is the result of applying that function to each element of the collection.
+
+```elixir
 list = [1,3,5,7,9]
+```
+```elixir
 Enum.map list, fn elem -> elem * 2 end
+```
+```elixir
 Enum.map list, fn elem -> elem * elem end
+```
+```elixir
 Enum.map list, fn elem -> elem > 6 end
+```
 
 # Pinned Values and Function Parameters
 ```elixir
@@ -285,49 +293,68 @@ IO.puts mr_valim.("Mike")
 IO.puts mr_valim.("Mike")
 ```
 
-# The & Noation
+## The & Noation
+```elixir
 add_one = &(&1 + 1)
 add_one.(44)
 square = &(&1 * &1)
 square.(8)
+```
 
+```elixir
 speak = &(IO.puts(&1))
 speak.("Hello")
+```
 
+```elixir
 rnd = &(Float.round(&1, &2))
 rnd = &(Float.round(&2, &1))
+```
 
+```elixir
 divrem = &{ div(&1, &2), rem(&1, &2) }
 divrem.(13, 5)
+```
 
+```elixir
 s = &"bacon and #{&1}"
 s.("custard")
+```
 
-
+```elixir
 match_end = &~r/.*#{&1}$/
 "cat" =~ match_end.("t")
 "cat" =~ match_end.("!")
+```
 
+```elixir
 l = &length/1
 l.([1,2,3,4])
-
+```
+```elixir
 len = &Enum.count/1
 len.([1,2,3,4])
-
+```
+```elixir
 m = &Kernel.min/2
 m.(99,88)
-
+```
+```elixir
 Enum.map [1,2,3,4], &(&1 + 1)
 Enum.map [1,2,3,4], &(&1 < 3)
+```
 
-# My turn
+## My turn
+```elixir
 Enum.map [1,2,3,4], fn x -> x + 2 end
 Enum.map [1,2,3,4], &(&1 + 2)
-
+```
+```elixir
 Enum.each [1,2,3,4], fn x -> IO.inspect x end
 Enum.each [1,2,3,4], &(IO.inspect &1)
+```
 
-# Modules and Named Functions
+## Modules and Named Functions
 **mm/times.exs**
 ```elixir 
 defmodule Times do
