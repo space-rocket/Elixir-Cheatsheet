@@ -28,15 +28,23 @@ a = [[1,2,3]]
 [1, _, _] = [1,"cat","dog"]
 
 ## Variables bind once (per match)
+```elixir
 [a,a] = [1,1]
+```
+```elixir
 a
 [a,a] = [1,2]
 
+```elixir
 a = 1
 [1, a, 3] = [1,2,3]
+```
 
 ## Forcing an existing value
-a = 1
+```elixir
+iex(1)> a = 1
+1
+```
 a = 2
 ^a = 1
 
